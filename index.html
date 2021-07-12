@@ -26,6 +26,7 @@
                     <input type="password" class="form-control" name="email" id="password" required>
                   </div>
                   <button type="submit" class="mt-4 btn btn-primary">Sign up</button>
+                  <button class="mt-4 btn btn-secondary" id="signInWithGoogle">Continue with Google</button>
                 </form>
             </div>
         </div>
@@ -33,11 +34,8 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-      https://firebase.google.com/docs/web/setup#available-libraries -->
 
     <script>
-        // Your web app's Firebase configuration
         var firebaseConfig = {
         apiKey: "AIzaSyAYkUR0KQ4EJGg1Hq2f2hfzlq7Tuc0qjD0",
         authDomain: "fir-auth-test-d787a.firebaseapp.com",
@@ -46,10 +44,8 @@
         messagingSenderId: "82450436724",
         appId: "1:82450436724:web:08dbf36e18684dd0323721"
         };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
 
-        const auth = firebase.auth();
+        firebase.initializeApp(firebaseConfig);
     </script>
 
     <script src="scripts/auth.js"></script>

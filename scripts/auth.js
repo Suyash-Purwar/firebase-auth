@@ -1,23 +1,42 @@
-const signupForm = document.querySelector('#signup') || undefined;
-const signinForm = document.querySelector('#signin') || undefined;
+const signUpForm = document.querySelector('#signup') || undefined;
+const signInForm = document.querySelector('#signin') || undefined;
 const signOutButton = document.querySelector('#signout') || undefined;
+const signInWithGoogle = document.querySelector('#signInWithGoogle') || undefined;
+
+const provider = new firebase.auth.GoogleAuthProvider();
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
         var uid = user.uid;
         console.log('Status: New user signed up');
         console.log(`UID: ${uid}`);
         // ...
     } else {
         console.log('State: User signed out')
-        // User is signed out
-        // ...
     }
-  });
+});
 
-signupForm?.addEventListener('submit', e => {
+signInWithGoogle?.addEventListener('click', e => {
+    e.preventDefault();
+
+    firebase.auth()
+    .signInWithPopup(provider)
+    .then(result => {
+        let credential = result.credential;
+        let token = credential.accessToken;
+        let user = result.user;
+
+        console.log(credential)
+        console.log(token)
+        console.log(user)
+    })
+    .catch(error => {
+        console.log('Failed');
+        console.log(error.code, error.message);
+    });
+});
+
+signUpForm?.addEventListener('submit', e => {
     e.preventDefault();
 
     let email = document.querySelector('#email').value;
@@ -38,7 +57,7 @@ signupForm?.addEventListener('submit', e => {
         });
 });
 
-signinForm?.addEventListener('submit', e => {
+signInForm?.addEventListener('submit', e => {
     e.preventDefault();
 
     let email = document.querySelector('#email').value;
@@ -57,6 +76,9 @@ signinForm?.addEventListener('submit', e => {
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
+
+            console.log(errorCode);
+            console.log(errorMessage)
         });
 });
 
