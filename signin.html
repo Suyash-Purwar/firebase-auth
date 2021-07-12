@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <!-- JavaScript Bundle with Popper -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+</head>
+<body>
+    <div class="mt-5 container">
+        <div class="row align-items-center px-5">
+            <div class="col border p-4">
+                <h2 class="mb-5">Sign In</h2>
+                <form id="signin">
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email address</label>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="example@example.com" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" name="email" id="password" required>
+                    </div>
+                    <button type="submit" class="mt-4 btn btn-primary">Sign in</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container px-5 mt-4">
+		<button id="signout" class="btn btn-secondary">Sign Out</button>
+	</div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+        apiKey: "AIzaSyAYkUR0KQ4EJGg1Hq2f2hfzlq7Tuc0qjD0",
+        authDomain: "fir-auth-test-d787a.firebaseapp.com",
+        projectId: "fir-auth-test-d787a",
+        storageBucket: "fir-auth-test-d787a.appspot.com",
+        messagingSenderId: "82450436724",
+        appId: "1:82450436724:web:08dbf36e18684dd0323721"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+    </script>
+
+    <script src="scripts/auth.js"></script>
+</body>
+</html>
