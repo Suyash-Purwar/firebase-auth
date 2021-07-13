@@ -1,5 +1,6 @@
 const signUpForm = document.querySelector('#signup') || undefined;
 const signInForm = document.querySelector('#signin') || undefined;
+const signInVerification = document.querySelector('#signInVerification') || undefined;
 const signOutButton = document.querySelector('#signout') || undefined;
 const signInWithGoogle = document.querySelector('#signInWithGoogle') || undefined;
 
@@ -44,10 +45,21 @@ signUpForm?.addEventListener('submit', e => {
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            // Signed in 
+            // Signed in
+
             var user = userCredential.user;
             console.log(user)
             console.log('Signed up new user');
+            
+            // Show verification button
+            signInVerification.style.display='block';
+            verifyUser(user.email);
+
+            firebase.auth().currentUser.sendEmailVerification()
+                .then(() => {
+                    // Email verification sent!
+                    console.log('Email Sent');
+                });
         })
         .catch((error) => {
             var errorCode = error.code;
@@ -70,8 +82,6 @@ signInForm?.addEventListener('submit', e => {
 
             console.log(user);
             console.log('Signed in')
-            // ...
-
         })
         .catch((error) => {
             var errorCode = error.code;
