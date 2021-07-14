@@ -98,4 +98,5 @@ signOutButton?.addEventListener('click', e => {
     firebase.auth().signOut()
         .then(() => console.log('Signed out successfully'))
         .catch(e => console.log(e.errorMessage, e.errorCode));
-})
+});
+
